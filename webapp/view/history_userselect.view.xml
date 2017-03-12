@@ -1,0 +1,12 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+	controllerName="hackaton.controller.history_userselect">
+	<Page title="Patient user" showNavButton="true" navButtonPress="onNavBack">
+		<content>
+			<List mode="SingleSelectLeft" includeItemInSelection="true" items="{/userdata}" selectionChange="onSelect">
+				<StandardListItem description="{FIRSTNAME}" icon="img/{ID}.jpg" iconDensityAware="false" iconInset="false" title="{LASTNAME}"
+					app:userid="{ID}" type="Navigation"/>
+			</List>
+		</content>
+	</Page>
+</mvc:View>

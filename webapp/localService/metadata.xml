@@ -1,0 +1,108 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+    <edmx:DataServices
+        xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+        <Schema
+            xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+            xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="gameofcode.gameOfCode">
+            <EntityType Name="userdataType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="PASSWORD" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="FIRSTNAME" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="LASTNAME" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="BIRTHDATE" Type="Edm.DateTime" Nullable="false"/>
+                <Property Name="GENDER" Type="Edm.String" Nullable="false" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="bodyPartsType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" Nullable="false" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="historyTypeType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" Nullable="false" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="hospitalsType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="ADDRESS" Type="Edm.String" Nullable="false" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="injuryTypeType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="NAME" Type="Edm.String" Nullable="false" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="userHistoryType">
+                <Key>
+                    <PropertyRef Name="USER_ID"/>
+                    <PropertyRef Name="TIMESTAMP"/>
+                    <PropertyRef Name="HISTORYTYPE_ID"/>
+                </Key>
+                <Property Name="USER_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="TIMESTAMP" Type="Edm.DateTime" Nullable="false"/>
+                <Property Name="COMMENT" Type="Edm.String" Nullable="false" MaxLength="255"/>
+                <Property Name="HISTORYTYPE_ID" Type="Edm.Int32" Nullable="false"/>
+            </EntityType>
+            <EntityType Name="userRegistrationType">
+                <Key>
+                    <PropertyRef Name="USER_ID"/>
+                    <PropertyRef Name="TIMESTAMP"/>
+                    <PropertyRef Name="BODYPART_ID"/>
+                    <PropertyRef Name="INJURYTYPE_ID"/>
+                    <PropertyRef Name="HOSPITAL_ID"/>
+                </Key>
+                <Property Name="USER_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="TIMESTAMP" Type="Edm.DateTime" Nullable="false"/>
+                <Property Name="BODYPART_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="INJURYTYPE_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="HOSPITAL_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="DESCRIPTION" Type="Edm.String" MaxLength="255"/>
+                <Property Name="LOCATION" Type="Edm.String" MaxLength="255"/>
+                <Property Name="IMAGE_URL" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityType Name="hospitalOpeningType">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="HOSPITAL_ID" Type="Edm.Int32" Nullable="false"/>
+                <Property Name="DATE" Type="Edm.DateTime" Nullable="false"/>
+                <Property Name="OPEN" Type="Edm.Time"/>
+                <Property Name="CLOSE" Type="Edm.Time"/>
+            </EntityType>
+            <EntityType Name="userRelativesType">
+                <Key>
+                    <PropertyRef Name="GenID"/>
+                </Key>
+                <Property Name="GenID" Type="Edm.String" Nullable="false" MaxLength="2147483647"/>
+                <Property Name="FIRSTNAME" Type="Edm.String" MaxLength="255"/>
+                <Property Name="LASTNAME" Type="Edm.String" MaxLength="255"/>
+            </EntityType>
+            <EntityContainer Name="gameOfCode" m:IsDefaultEntityContainer="true">
+                <EntitySet Name="userdata" EntityType="gameofcode.gameOfCode.userdataType"/>
+                <EntitySet Name="bodyParts" EntityType="gameofcode.gameOfCode.bodyPartsType"/>
+                <EntitySet Name="historyType" EntityType="gameofcode.gameOfCode.historyTypeType"/>
+                <EntitySet Name="hospitals" EntityType="gameofcode.gameOfCode.hospitalsType"/>
+                <EntitySet Name="injuryType" EntityType="gameofcode.gameOfCode.injuryTypeType"/>
+                <EntitySet Name="userHistory" EntityType="gameofcode.gameOfCode.userHistoryType"/>
+                <EntitySet Name="userRegistration" EntityType="gameofcode.gameOfCode.userRegistrationType"/>
+                <EntitySet Name="hospitalOpening" EntityType="gameofcode.gameOfCode.hospitalOpeningType"/>
+                <EntitySet Name="userRelatives" EntityType="gameofcode.gameOfCode.userRelativesType"/>
+            </EntityContainer>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

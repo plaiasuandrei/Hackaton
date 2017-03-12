@@ -1,0 +1,124 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="hackaton.controller.Emergency"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<NavContainer id="wizardNavContainer">
+		<pages>
+			<Page id="page1" title="New Emergency" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<Wizard id="CreateEmergencyWizard" complete="completedHandler" enableBranching="true" finishButtonText="Confirm Emergency"
+						showNextButton="true">
+						<WizardStep id="SelectPersonStep" title="Select person" validated="true" nextStep="SelectAreaStep">
+							<List mode="SingleSelectLeft" selectionChange="onSelectPerson" items="{/userdata}">
+								<StandardListItem title="{FIRSTNAME} {LASTNAME}" icon="img/{ID}.jpg" iconDensityAware="false" iconInset="false" app:mydata="{ID}"/>
+							</List>
+						</WizardStep>
+						<WizardStep id="SelectAreaStep" title="Select Injury Area" validated="true" nextStep="SelectTypeInjury">
+							<!--<MessageStrip class="sapUiSmallMarginBottom" text="Select the injury area" showIcon="true"/>-->
+							<l:VerticalLayout>
+								<l:FixFlex class="fixFlexVertical" minFlexSize="0">
+									<l:fixContent>
+										<Image id="imgHead1" src="img/0-0.jpeg" press="onSelectArea" app:mydata="HEAD" app:bodyPartId="1"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+										<Image id="imgHead2" src="img/0-1.jpeg" press="onSelectArea" app:mydata="HEAD" app:bodyPartId="1"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+									</l:fixContent>
+								</l:FixFlex>
+								<l:FixFlex class="fixFlexVertical">
+									<l:fixContent>
+										<Image id="imgLEFTUPPER" src="img/1-0.jpeg" press="onSelectArea" app:mydata="LEFTUPPER" app:bodyPartId="2"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+										<Image id="imgRIGHTUPPER" src="img/1-1.jpeg" press="onSelectArea" app:mydata="RIGHTUPPER" app:bodyPartId="3"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+									</l:fixContent>
+								</l:FixFlex>
+								<l:FixFlex class="fixFlexVertical">
+									<l:fixContent>
+										<Image id="imgLEFTMIDDLE" src="img/2-0.jpeg" press="onSelectArea" app:mydata="LEFTMIDDLE" app:bodyPartId="4"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+										<Image id="imgRIGHTMIDDLE" src="img/2-1.jpeg" press="onSelectArea" app:mydata="RIGHTMIDDLE" app:bodyPartId="5"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+									</l:fixContent>
+								</l:FixFlex>
+								<l:FixFlex class="fixFlexVertical">
+									<l:fixContent>
+										<Image id="imgLEFTUPPERLEG" src="img/3-0.jpeg" press="onSelectArea" app:mydata="LEFTUPPERLEG" app:bodyPartId="6"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+										<Image id="imgRIGHTUPPERLEG" src="img/3-1.jpeg" press="onSelectArea" app:mydata="RIGHTUPPERLEG" app:bodyPartId="7"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+									</l:fixContent>
+								</l:FixFlex>
+								<l:FixFlex class="fixFlexVertical">
+									<l:fixContent>
+										<Image id="imgLEFTKNEE" src="img/4-0.jpeg" press="onSelectArea" app:mydata="LEFTKNEE" app:bodyPartId="8"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+										<Image id="imgRIGHTKNEE" src="img/4-1.jpeg" press="onSelectArea" app:mydata="RIGHTKNEE" app:bodyPartId="9"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+									</l:fixContent>
+								</l:FixFlex>
+								<l:FixFlex class="fixFlexVertical">
+									<l:fixContent>
+										<Image id="imgLEFTFOOT" src="img/5-0.jpeg" press="onSelectArea" app:mydata="LEFTFOOT" app:bodyPartId="10"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+										<Image id="imgRIGHTFOOT" src="img/5-1.jpeg" press="onSelectArea" app:mydata="RIGHTFOOT" app:bodyPartId="11"
+											width="{= ${device>/system/phone} ? '50%' : '250px'}"></Image>
+									</l:fixContent>
+								</l:FixFlex>
+							</l:VerticalLayout>
+						</WizardStep>
+						<WizardStep id="SelectTypeInjury" title="Define Injury" validated="true" nextStep="SelectHospital">
+							<List id="lstInjuries" mode="SingleSelectLeft" selectionChange="onSelectInjury" items="{/injuryBodyparts}">
+								<StandardListItem title="{NAME_INJURY}" iconDensityAware="false" iconInset="false" app:mydata="{INJURY_ID}"/>
+							</List>
+						</WizardStep>
+						<WizardStep id="SelectHospital" title="Select Hospital" validated="true">
+							<List mode="SingleSelectLeft" items="{/hospitals}" selectionChange="onSelectHospital">
+								<StandardListItem title="{NAME}"/>
+								<ObjectListItem title="{NAME}" type="Active" app:mydata="{ID}">
+									<firstStatus>
+										<ObjectStatus text="Waiting time: {path: 'WAITTIME', formatter: '.TimeFormatter.format'}" state="{path: 'WAITTIME', formatter: '.StateFormatter.format'}"/>
+									</firstStatus>
+								</ObjectListItem>
+							</List>
+						</WizardStep>
+					</Wizard>
+				</content>
+			</Page>
+			<Page id="page2" title="Confirm Emergency">
+				<content>
+					<f:SimpleForm title="1. Select person" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+						<f:content>
+							<Label text="Person" design="Bold"/>
+							<Text text="{emergencyModel>/USER_NAME}"/>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm title="2. Select Injury Area" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+						<f:content>
+							<Label text="Area" design="Bold"/>
+							<Text text="{emergencyModel>/BODYPART_NAME}"/>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm title="3. Define Injury" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+						<f:content>
+							<Label text="Injury" design="Bold"/>
+							<Text text="{emergencyModel>/INJURYTYPE_NAME}"/>
+						</f:content>
+					</f:SimpleForm>
+					<f:SimpleForm title="4. Select Hospital" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+						<f:content>
+							<Label text="Hospital" design="Bold"/>
+							<Text text="{emergencyModel>/HOSPITAL_NAME}"/>
+						</f:content>
+					</f:SimpleForm>
+				</content>
+				<footer>
+					<Bar>
+						<contentRight>
+							<Button text="Submit" press="handleWizardSubmit" type="Accept"></Button>
+							<Button text="Cancel" press="handleWizardCancel" type="Reject"></Button>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</pages>
+	</NavContainer>
+</mvc:View>

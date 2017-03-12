@@ -1,0 +1,61 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:gmaps="openui5.googlemaps" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="hackaton.controller.pharmacy_main">
+	<App>
+		<pages>
+			<Page title="Phamacies" showNavButton="true" navButtonPress="onNavBack">
+				<content>
+					<IconTabBar id="__header1">
+						<items>
+							<IconTabFilter icon="sap-icon://search" iconColor="Positive" id="__filter7">
+								<content>
+									<Table id="idHospitalsTable" items="{/pharmacies}" >
+										<headerToolbar>
+											<Toolbar>
+											    <SearchField width="100%" placeholder="Search" id="__field0"/>
+												<ToolbarSpacer/>
+												<Button tooltip="View Settings" icon="sap-icon://drop-down-list" press="handleViewSettingsDialogButtonPressed"/>
+												<content>
+													
+												</content>
+											</Toolbar>
+										</headerToolbar>
+										<columns>
+											<Column width="19em"><Text text="Name"/></Column>
+											<Column minScreenWidth="Tablet" demandPopin="true"><Text text="Night schedule shift today"/></Column>
+											<!--<Column minScreenWidth="Tablet" demandPopin="true"><Text text="Postal code"/></Column>-->
+											<!--<Column minScreenWidth="Tablet" demandPopin="true"><Text text="City"/></Column>-->
+										</columns>
+										<items>
+											<ColumnListItem>
+												<cells>
+													<ObjectIdentifier title="{NAME}"/>
+													<Text text="{/NIGHTSHIFT}"/>
+													<!--<Text text="{doctorModel>address/postcode}"/>-->
+													<!--<Text text="{doctorModel>address/city}"/>-->
+												</cells>
+											</ColumnListItem>
+										</items>
+										<infoToolbar/>
+																					
+									</Table>
+								</content>
+							</IconTabFilter>
+							<IconTabFilter icon="sap-icon://map" id="geoMapFilter">
+								<!--<core:HTML height="600px" afterRendering="onAfterMapRendering" content='&lt;div id=&quot;map&quot; style=&quot;height:600px;&quot;&gt;&lt;/div&gt;'/>-->
+								<gmaps:Map lat="49.600771" lng="6.113692" zoom="12" id="kaartje" height="400px">
+									<gmaps:markerCluster>
+										<gmaps:MarkerCluster markers="{/pharmacies}">
+											<gmaps:markers>
+												<gmaps:Marker lat="{LATITUDE}" lng="{LONGITUDE}" info="{NAME}"></gmaps:Marker>
+											</gmaps:markers>
+										</gmaps:MarkerCluster>
+									</gmaps:markerCluster>
+								</gmaps:Map>
+							
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,38 @@
+{
+	"doctors": [{
+			"name": "Buicu Crina",
+			"address": {
+				"street": "5 Rue Edward Steichen",
+				"postcode": "2540",
+				"city": "Luxembourg",
+				"lat":"49.600771",
+				"long":"6.113692"
+			},
+			"speciality": "General doctor"
+
+		}, {
+			"name": "Flash",
+			"address": {
+				"street": "& Liberty Avenue",
+				"postcode": "1221",
+				"city": "Luxembourg",
+				"lat":"49.590771",
+				"long":"6.123692"
+			},
+			"speciality": "Too fast "
+
+		}, {
+			"name": "Batman",
+			"address": {
+				"street": "1 The Cave Street",
+				"postcode": "666",
+				"city": "Gotham",
+				"lat":"49.5200771",
+				"long":"6.113692"
+			},
+			"speciality": "Superhero"
+
+		}
+
+	]
+}

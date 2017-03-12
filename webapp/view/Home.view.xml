@@ -1,0 +1,50 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="hackaton.controller.Home"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Home" showHeader="false" class="sapUiTinyMargin">
+		<content>
+			<!--<TileContainer id="container" tileDelete="handleTileDelete">-->
+			<StandardTile icon="sap-icon://customer" type="{type}" number="{number}" numberUnit="{numberUnit}" title="My Info" info="{info}"
+				infoState="{infoState}"/>
+			<StandardTile icon="sap-icon://clinical-tast-tracker" type="{type}" number="{number}" numberUnit="{numberUnit}" title="History"
+				info="{info}" infoState="{infoState}" press="onHistory"/>
+			<SlideTile class="sapUiTinyMarginTop" transitionTime="250" displayTime="2500">
+				<tiles>
+					<GenericTile frameType="TwoByOne" press="onDoctors" backgroundImage="img/doctor_group_2_5.png">
+						<tileContent>
+							<TileContent footer="March 12, 2017">
+								<content>
+									<NewsContent contentText="Find a doctor" subheader="Powered by SAP and data.public.lu"/></content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					<GenericTile frameType="TwoByOne" press="onHospitals" backgroundImage="img/hospital.png">
+						<tileContent>
+							<TileContent footer="March 12, 2017">
+								<content>
+									<NewsContent contentText="Find a hospital" subheader="Powered by SAP and data.public.lu"/></content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					<GenericTile frameType="TwoByOne" press="onPharmacies" backgroundImage="img/pharmacy.png">
+						<tileContent>
+							<TileContent footer="March 12, 2017">
+								<content>
+									<NewsContent contentText="Find a pharmacy" subheader="Powered by SAP and data.public.lu"/></content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+				</tiles>
+			</SlideTile>
+			<GenericTile frameType="TwoByOne" press="onEmergency" class="largerFont">
+				<tileContent>
+					<TileContent>
+						<content>
+							<ObjectStatus text="Register Emergency" state="Error" icon="sap-icon://wounds-doc" />
+						</content>
+					</TileContent>
+				</tileContent>
+			</GenericTile>
+			<!--</TileContainer>-->
+		</content>
+	</Page>
+</mvc:View>

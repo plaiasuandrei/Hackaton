@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta charset="UTF-8">
+
+		<title>hackaton</title>
+
+		<script id="sap-ui-bootstrap"
+			src="../../resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-xx-bindingSyntax="complex"
+			data-sap-ui-resourceroots='{"hackaton": ""}'>
+		</script>
+
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		
+		<!--<link rel="stylesheet" type="text/css" href="//api.geoportail.lu/build/latest/ext-all.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="//api.geoportail.lu/build/latest/xtheme-gray.css" />-->
+		<!--<link rel="stylesheet" type="text/css" href="//api.geoportail.lu/build/latest/api.css" />-->
+		<!--<script type="text/javascript" src="//api.geoportail.lu/build/latest/ext-base.js"></script>-->
+		<!--<script type="text/javascript" src="//api.geoportail.lu/build/latest/ext-all.js"></script>-->
+		<!--<script type="text/javascript" src="//api.geoportail.lu/build/latest/geoadmin.js"></script>-->
+		<!--<script type="text/javascript" src="//api.geoportail.lu/api.js"></script>     -->
+
+
+
+		<script>
+			sap.ui.getCore().attachInit(function() {
+				new sap.m.Shell({
+					app: new sap.ui.core.ComponentContainer({
+						height : "100%",
+						name : "hackaton"
+					})
+				}).placeAt("content");
+			});
+		</script>
+	</head>
+
+	<body class="sapUiBody" id="content">
+	    <div id="maphome"></div>
+	</body>
+
+</html>

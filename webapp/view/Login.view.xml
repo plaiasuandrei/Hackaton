@@ -1,0 +1,16 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="hackaton.controller.Login" xmlns:l="sap.ui.layout"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Login">
+		<content>
+			<l:VerticalLayout class="sapUiContentPadding" width="100%">
+				<l:content>
+					<Label text="Username (required)" labelFor="inputUsername"/>
+					<Input id="inputUsername" required="true"/>
+					<Label text="Password" labelFor="inputPassword" />
+					<Input id="inputPassword" type="Password"/>
+					<Button text="Login" width="100%" press="onLogin" />
+				</l:content>
+			</l:VerticalLayout>
+		</content>
+	</Page>
+</mvc:View>

@@ -1,0 +1,213 @@
+{
+	"_version": "1.5.0",
+	"sap.app": {
+		"id": "hackaton",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponent",
+			"version": "0.0.0"
+		},
+		"dataSources": {
+			"maintService": {
+				"uri": "/gameOfCodeDB/gameofcode/gameOfCode.xsodata/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/gameOfCode.xsodata/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"rootView": {
+			"viewName": "hackaton.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {},
+				"sap.f": {},
+				"sap.ushell": {},
+				"sap.collaboration": {},
+				"sap.ui.comp": {},
+				"sap.uxap": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "hackaton.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "maintService",
+				"preload": true
+
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "hackaton.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "pages"
+			},
+			"routes": [
+				{
+					"name": "Login",
+					"pattern": "",
+					"target": "Login",
+					"greedy": false
+				},
+				{
+					"name": "Home",
+					"pattern": "Home",
+					"target": "Home",
+					"greedy": false
+				},
+				
+				{
+					"name": "History",
+					"pattern": "History",
+					"target": "History",
+					"greedy": false
+				},
+				
+				{
+					"name": "History_main",
+					"pattern": "History_main/{userid}",
+					"target": "History_main",
+					"greedy": false
+				},
+				
+				{
+					"name": "Emergency",
+					"pattern": "Emergency",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"Emergency"
+					]
+				},
+				{
+					"name": "doctors",
+					"pattern": "doctors",
+					"greedy": false,
+					"target": "doctors"
+				},
+				{
+					"name": "hospitals",
+					"pattern": "hospitals",
+					"greedy": false,
+					"target": "hospitals"
+				},
+				{
+					"name": "pharmacies",
+					"pattern": "pharmacies",
+					"greedy": false,
+					"target": "pharmacy_main"
+				}
+			],
+			"targets": {
+				"Login": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Login",
+					"viewLevel": 1,
+					"viewId": "Login"
+				},
+				"doctors": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "doctors_main",
+					"title": "Find doctors",
+					"viewLevel": 2
+				},
+				"hospitals": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "hospitals_main",
+					"title": "Find hospitals",
+					"viewLevel": 2
+				},
+				"Home": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Home",
+					"viewLevel": 2,
+					"viewId": "Home"
+				},
+				"Emergency": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "Emergency"
+				},
+				"History": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "history_userselect"
+				},
+				"History_main": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "history_main"
+				},
+				"pharmacy_main": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearAggregation": true,
+					"viewName": "pharmacy_main"
+				}
+			}
+		}
+	}
+}
